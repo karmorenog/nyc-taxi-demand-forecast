@@ -9,7 +9,7 @@ st.write(
     "y compara sus características de demanda."
 )
 
-API_URL = "http://127.0.0.1:8000/segmentacion"
+API_URL = "https://nyc-taxi-demand-forecast-a4be.onrender.com/segmentacion"
 
 
 @st.cache_data(ttl=60)
