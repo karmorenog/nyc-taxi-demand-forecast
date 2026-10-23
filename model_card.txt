@@ -1,0 +1,90 @@
+
+MODEL CARD: PRONOSTICO DE DEMANDA DE TAXIS EN NYC
+
+1. PROPOSITO
+Pronosticar la cantidad de viajes por hora y zona de recogida
+para apoyar la planificacion de taxis y la asignacion de recursos.
+
+2. DATOS
+Se utilizaron datos historicos de viajes de taxis de NYC de enero
+de 2024, agregados por hora y zona de recogida.
+Se construyeron variables temporales, calendario y rezagos
+(lag_24, lag_48 y lag_168, entre otros).
+
+3. MODELO Y EVALUACION
+Modelo principal: XGBoost.
+Periodo de prueba: 25 al 31 de enero de 2024.
+
+XGBoost:
+MAE = 11.9188 viajes
+RMSE = 21.9749 viajes
+
+Baseline de la semana anterior:
+MAE = 11.7621 viajes
+RMSE = 21.7108 viajes
+
+Pronostico p50:
+MAE = 11.8983 viajes
+
+El baseline semanal supera ligeramente a XGBoost en MAE y RMSE.
+Por lo tanto, XGBoost no demuestra una mejora frente a esta
+referencia simple en la evaluacion realizada.
+
+4. INCERTIDUMBRE
+La cobertura observada del intervalo p10-p90 es 74.56%,
+por debajo del objetivo aproximado del 80%.
+
+Cobertura por cluster:
+- Cluster 0, alta demanda: MAE 17.92; cobertura 59.12%.
+- Cluster 1, baja o moderada demanda: MAE 5.27; cobertura 91.65%.
+
+La cobertura varia entre clusters. Los intervalos necesitan
+evaluacion y calibracion adicional por grupo.
+
+5. SEGMENTACION
+Se utilizo KMeans con k=2.
+La segmentacion identifica:
+- Cluster 0: zonas de alta demanda.
+- Cluster 1: zonas de baja o moderada demanda.
+
+La segmentacion se basa en caracteristicas historicas de demanda
+y se utilizo para analizar diferencias de desempeño entre zonas.
+
+6. LIMITACIONES Y USO RESPONSABLE
+- Los datos corresponden al periodo analizado y pueden no
+  representar cambios futuros en la demanda.
+- El modelo no supera actualmente al baseline semanal.
+- Los intervalos p10-p90 no alcanzan la cobertura objetivo global
+  y presentan diferencias importantes entre clusters.
+- Los pronosticos son estimaciones, no garantias de demanda.
+- Las recomendaciones de taxis deben revisarse antes de aplicarse
+  y no deben ser la unica base para decisiones operativas.
+
+7. TRABAJO FUTURO
+Evaluar otros modelos, comparar resultados en periodos adicionales,
+calibrar los intervalos por cluster y monitorear el desempeño
+cuando cambien los patrones de demanda.
+
+
+8. USOS NO RECOMENDADOS Y RIESGOS PARA LAS PERSONAS
+
+El modelo no debe utilizarse como unico criterio para reducir
+o retirar taxis de una zona. Una demanda historicamente baja
+no significa que sus residentes o visitantes no necesiten
+transporte.
+
+Las zonas excluidas del pronostico no deben interpretarse
+como zonas sin demanda. Antes de tomar decisiones sobre ellas,
+se necesita informacion adicional o una revision humana.
+
+Una asignacion basada exclusivamente en el volumen historico
+podria perjudicar a barrios con pocos viajes registrados,
+incluyendo zonas cuyo servicio es importante aunque su demanda
+sea menor. Las recomendaciones deben revisarse considerando
+la cobertura del servicio, las necesidades locales y los posibles
+efectos desiguales entre zonas.
+
+El modelo debe apoyar la decision de una persona responsable,
+no reemplazar su criterio. No debe utilizarse para garantizar
+la demanda futura ni para justificar automaticamente recortes
+de servicio.
