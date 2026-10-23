@@ -11,9 +11,9 @@ st.write(
     "según la demanda observada."
 )
 
-API_BASE = "http://127.0.0.1:8000"
-EVALUACION_URL = f"{API_BASE}/evaluacion"
-PRONOSTICO_URL = f"{API_BASE}/pronostico"
+EVALUACION_URL = "https://nyc-taxi-demand-forecast-a4be.onrender.com/evaluacion"
+PRONOSTICO_URL = "https://nyc-taxi-demand-forecast-a4be.onrender.com/pronostico"
+
 
 st.subheader("1. Parámetros de costos")
 
