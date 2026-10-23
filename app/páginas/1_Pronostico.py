@@ -9,7 +9,8 @@ st.write(
     "a través de la API de FastAPI."
 )
 
-API_URL = "http://127.0.0.1:8000/pronostico"
+API_URL = "https://nyc-taxi-demand-forecast-a4be.onrender.com/pronostico"
+
 
 @st.cache_data(ttl=60)
 def cargar_datos_api():
