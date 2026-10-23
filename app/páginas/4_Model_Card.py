@@ -5,7 +5,7 @@ import requests
 import streamlit as st
 from sklearn.metrics import mean_absolute_error, mean_squared_error
 
-API_URL = "http://127.0.0.1:8000/evaluacion"
+API_URL = "https://nyc-taxi-demand-forecast-a4be.onrender.com/evaluacion"
 
 st.title("📋 Model Card")
 st.write(
