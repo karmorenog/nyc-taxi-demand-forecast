@@ -153,13 +153,21 @@ El proyecto utiliza las siguientes funciones avanzadas para mejorar la experienc
 - Función	Uso en el proyecto
 
 st.navigation y st.Page	Organizar la aplicación en cuatro páginas.
+
 @st.fragment	Actualizar la sección de recomendación sin recargar toda la página.
+
 @st.dialog	Mostrar una ventana emergente con explicaciones o ayuda.
+
 st.plotly_chart(on_select="rerun")	Permitir seleccionar zonas directamente en un gráfico interactivo.
+
 st.column_config	Mejorar la presentación de las tablas.
+
 @st.cache_data	Evitar repetir innecesariamente consultas a la API.
+
 st.secrets	Guardar la dirección de la API fuera del código.
+
 st.query_params	Recordar la zona y la fecha seleccionadas en el enlace.
+
 st.status y st.toast	Mostrar el estado de una operación y avisos al usuario.
 
 ## 11. Enlaces del proyecto
