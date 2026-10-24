@@ -50,7 +50,8 @@ def consultar_pronostico(
         df = df[df["PULocationID"] == zona]
 
     if hora is not None:
-        df = df[df["hora"] == hora]
+    df["hora"] = pd.to_datetime(df["hora"])
+    df = df[df["hora"].dt.hour == hora]
 
     if df.empty:
         raise HTTPException(
