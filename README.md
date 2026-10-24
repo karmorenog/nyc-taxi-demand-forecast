@@ -65,12 +65,10 @@ La carpeta `app/` contiene la aplicación desarrollada con Streamlit.
 ### Notebooks de preparación y análisis
 
 - `Org preparacion.ipynb`: notebook original de preparación y análisis.
-- `preparacion.ipynb`: notebook de preparación de datos y desarrollo del análisis.
 - `preparacion_limpio.ipynb`: versión de trabajo para la preparación, evaluación y documentación de los resultados.
 
 ### Archivos de datos y resultados
 
-- `plan_operativo_taxis_2024-02-01.csv`: datos del plan operativo de referencia.
 - `plan_operativo_taxis_actualizado_2024-02-01.csv`: versión actualizada de los datos del plan operativo.
 - `evaluacion_pronosticos.csv`: resultados de la evaluación de los pronósticos.
 - `segmentacion_zonas_taxi.csv`: resultados de la segmentación de zonas.
@@ -151,9 +149,9 @@ Las predicciones deben utilizarse como apoyo para la planificación y no como ga
 
 ## 10. Enlaces del proyecto
 
-- **Repositorio de GitHub:** enlace al repositorio del proyecto.
-- **Aplicación Streamlit:** enlace a la aplicación publicada.
-- **Documentación de la API:** enlace al endpoint `/docs` de la API publicada.
+- **Repositorio de GitHub:** https://github.com/karmorenog/nyc-taxi-demand-forecast
+- - **Aplicación Streamlit:** https://nyc-taxi-demand-forecast-jnk.streamlit.app/Model_Card
+- **Documentación de la API:** https://nyc-taxi-demand-forecast-a4be.onrender.com/docs?utm_source
 
 ## 11. Autores
 
