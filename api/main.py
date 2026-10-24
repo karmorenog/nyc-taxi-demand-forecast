@@ -33,10 +33,19 @@ def informacion():
     }
 
 
+
 @app.get("/pronostico")
 def consultar_pronostico(
-    zona: int | None = Query(default=None, description="ID de la zona de recogida"),
-    hora: int | None = Query(default=None, ge=0, le=23, description="Hora del día, de 0 a 23"),
+    zona: int | None = Query(
+        default=None,
+        description="ID de la zona de recogida",
+    ),
+    hora: int | None = Query(
+        default=None,
+        ge=0,
+        le=23,
+        description="Hora del día, de 0 a 23",
+    ),
 ):
     if not CSV_PATH.exists():
         raise HTTPException(
@@ -45,19 +54,21 @@ def consultar_pronostico(
         )
 
     df = pd.read_csv(CSV_PATH)
+    df["hora"] = pd.to_datetime(df["hora"], errors="coerce")
 
     if zona is not None:
         df = df[df["PULocationID"] == zona]
 
     if hora is not None:
-    df["hora"] = pd.to_datetime(df["hora"])
-    df = df[df["hora"].dt.hour == hora]
+        df = df[df["hora"].dt.hour == hora]
 
     if df.empty:
         raise HTTPException(
             status_code=404,
             detail="No se encontraron resultados para esos filtros.",
         )
+
+    df = df.astype(object).where(pd.notna(df), None)
 
     return {
         "total_resultados": len(df),
